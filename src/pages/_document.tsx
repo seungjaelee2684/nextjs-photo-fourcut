@@ -13,8 +13,8 @@ export default class MyDocument extends Document {
           <meta name="keywords" content="사진, 인생네컷, 인생, 네컷, 이미지, 꾸미기, 테마, 스티커, 스티커사진" />
           <meta property="og:title" content="Love Four Cut" />
           <meta property="og:description" content="내 사진 꾸미기" />
-          <meta property="og:image" content="/next.svg" />
-          <link rel="icon" href="/next.svg" />
+          <meta property="og:image" content="/images/L.png" />
+          <link rel="icon" href="/images/L.png" />
           <title>Love Four Cut</title>
         </Head>
         <body>
