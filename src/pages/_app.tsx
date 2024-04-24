@@ -18,7 +18,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
           {/* toast 컴포넌트 달아둠으로써 toast알림이 발생했을때 화면에 나타나게 한다. */ }
         </main>
-        <ModeToggle className={"absolute top-6 right-6"} />
+        <ModeToggle className={"absolute bottom-6 right-6"} />
       </QueryClientProvider>
     </ThemeProvider>
   );

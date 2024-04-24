@@ -1,8 +1,11 @@
 "use client";
 
+import { Article } from "@/styles/articleStyle";
+
 export default function Landing() {
+
   return (
-    <article className="w-[100%] flex justify-center p-[50px]">
+    <article className={Article}>
       Landing
     </article>
   );
