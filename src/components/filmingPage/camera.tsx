@@ -32,7 +32,7 @@ export default function Camera() {
   console.log(isConnect);
 
   return (
-    <section className="w-[100%] h-[100vh - 50px] flex justify-center">
+    <section className="w-[700px] h-[600px] flex justify-center">
       {(isConnect)
         ? <video
           ref={cameraRef}
@@ -42,7 +42,7 @@ export default function Camera() {
             w-[100%]
             h-[100%]
           " />
-        : <div className="w-[100%] h-[100%] bg-black">ddd</div>}
+        : <div className="w-[100%] h-[100%] bg-black rounded-md">ddd</div>}
     </section>
   )
 };
