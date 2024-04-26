@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { BsCameraVideoOffFill } from "react-icons/bs";
+import { MdFiberManualRecord } from "react-icons/md";
 
 export default function Camera() {
 
@@ -27,12 +29,26 @@ export default function Camera() {
         tracks.forEach((track) => track.stop());
       }
     };
-  }, []);
+  }, [isConnect]);
 
   console.log(isConnect);
 
   return (
-    <section className="w-[700px] h-[600px] flex justify-center">
+    <section className="
+      w-[700px]
+      h-[600px]
+      flex
+      justify-center
+      relative
+    ">
+      {(isConnect)
+        && <MdFiberManualRecord className="
+          absolute
+          top-20
+          right-10
+          text-[40px]
+          text-red-500
+        " />}
       {(isConnect)
         ? <video
           ref={cameraRef}
@@ -42,7 +58,19 @@ export default function Camera() {
             w-[100%]
             h-[100%]
           " />
-        : <div className="w-[100%] h-[100%] bg-black rounded-md">ddd</div>}
+        : <div className="
+          w-[100%]
+          h-[100%]
+          bg-black
+          text-white
+          gap-4
+          flex
+          flex-col
+          justify-center
+          items-center">
+          <BsCameraVideoOffFill className="text-white text-[60px]"/>
+          카메라를 연결해주세요
+        </div>}
     </section>
   )
 };
