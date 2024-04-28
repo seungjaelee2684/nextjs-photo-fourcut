@@ -6,6 +6,20 @@ export default function Camera() {
 
   const cameraRef = useRef<HTMLVideoElement>(null);
   const [isConnect, setIsConnect] = useState<boolean>(false);
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
+
+  const onClickCaptureHandler = () => {
+    const camera = cameraRef.current;
+
+    if (camera) {
+      const canvas = document.createElement('canvas');
+      canvas.width = camera.videoWidth;
+      canvas.height = camera.videoHeight;
+      canvas.getContext('2d')?.drawImage(camera, 0, 0);
+      const imageUrl = canvas.toDataURL('image.png');
+      setImageSrc(imageUrl);
+    };
+  };
 
   useEffect(() => {
     const initCamera = async () => {
@@ -38,7 +52,9 @@ export default function Camera() {
       w-[700px]
       h-[600px]
       flex
+      flex-col
       justify-center
+      items-center
       relative
     ">
       {(isConnect)
@@ -71,6 +87,12 @@ export default function Camera() {
           <BsCameraVideoOffFill className="text-white text-[60px]"/>
           카메라를 연결해주세요
         </div>}
+        <button
+          onClick={onClickCaptureHandler}
+          className="w-[140px] h-[40px] border hover:bg-black-200">
+          Capture
+        </button>
+        {(imageSrc) && <img src={imageSrc} alt="캡쳐" />}
     </section>
   )
 };
