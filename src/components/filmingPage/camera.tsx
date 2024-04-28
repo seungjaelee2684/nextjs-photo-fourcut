@@ -35,8 +35,9 @@ const NoneCamera = `
 export default function Camera() {
 
   const cameraRef = useRef<HTMLVideoElement>(null);
+  const imgArr: number[] = [0, 1, 2, 3];
   const [isConnect, setIsConnect] = useState<boolean>(false);
-  const [imageSrc, setImageSrc] = useState<string[] | null>(null);
+  const [imageSrc, setImageSrc] = useState<string[]>([]);
 
   const onClickCaptureHandler = () => {
     const camera = cameraRef.current;
@@ -47,7 +48,7 @@ export default function Camera() {
       canvas.height = camera.videoHeight;
       canvas.getContext('2d')?.drawImage(camera, 0, 0);
       const imageUrl = canvas.toDataURL('image.png');
-      setImageSrc([imageUrl]);
+      setImageSrc([...imageSrc, imageUrl]);
     };
   };
 
@@ -96,13 +97,13 @@ export default function Camera() {
         className="w-[140px] h-[40px] rounded border hover:bg-gray-100">
         Capture
       </button>
-      <div className="w-[700px] flex justify-center align-center gap-2">
-        {imageSrc?.map((item: any, index: number) => {
+      <div className="w-[700px] flex justify-center align-center gap-6">
+        {imgArr?.map((item: any, index: number) => {
           return (
             <div
               key={index}
-              className="w-[80px] h-[80px] border">
-              <img src={item} alt="캡쳐" />
+              className="w-[100px] h-[100px] border">
+              {(imageSrc[item]) && <img src={item.url} alt="캡쳐" className="" />}
             </div>
           )
         })}
