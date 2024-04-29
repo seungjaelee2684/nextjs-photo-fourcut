@@ -14,14 +14,14 @@ const CameraSection = `
 
 const CameraIcon = `
   absolute
-  top-20
-  right-10
+  top-[15%]
+  right-[5%]
   text-[40px]
   text-red-500
 `;
 
 const NoneCamera = `
-  w-[700px]
+  w-[600px]
   h-[600px]
   bg-black
   text-white
@@ -81,13 +81,14 @@ export default function Camera() {
   return (
     <section className={CameraSection}>
       {(isConnect)
-        && <MdFiberManualRecord className={CameraIcon} />}
-      {(isConnect)
-        ? <video
-          ref={cameraRef}
-          autoPlay
-          playsInline
-          className="w-[700px] h-[600px]" />
+        ? <div className="relative">
+          <MdFiberManualRecord className={CameraIcon} />
+          <video
+            ref={cameraRef}
+            autoPlay
+            playsInline
+            className="w-[600px] h-[600px]" />
+        </div>
         : <div className={NoneCamera}>
           <BsCameraVideoOffFill className="text-white text-[60px]" />
           카메라를 연결해주세요
@@ -97,13 +98,13 @@ export default function Camera() {
         className="w-[140px] h-[40px] rounded border hover:bg-gray-100">
         Capture
       </button>
-      <div className="w-[700px] flex justify-center align-center gap-6">
+      <div className="w-[600px] flex justify-center align-center gap-6">
         {imgArr?.map((item: any, index: number) => {
           return (
             <div
               key={index}
               className="w-[100px] h-[100px] border">
-              {(imageSrc[item]) && <img src={item.url} alt="캡쳐" className="" />}
+              {(imageSrc[item]) && <img src={imageSrc[item]} alt="캡쳐" className="w-[100%] h-[100%] cover" />}
             </div>
           )
         })}
